@@ -1,0 +1,8 @@
+Hair Salon web application
+
+Authored by Joshua Atteberry
+
+This application allows the user to add stylists to a database and assign clients to those stylists.
+
+To install, clone repository, run bundle in main directory, and open app.rb in ruby. 
+  

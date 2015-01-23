@@ -1,22 +1,30 @@
-<h1>Stylists<h1>
+<html>
+  <head>
+    <title>Hair Salon</title>
+    <link href='css/styles.css' type='text/css' rel='stylesheet' />
+  </head>
+  <body>
+    <h1>Stylists</h1>
 
-<p>Add stylist:</p>
+    <p>Add stylist</p>
 
-<form action="/stylists" method="post">
-  <label for="stylist_name">New stylist name:</lable>
-  <input id="stylist_name" name="stylist_name" type="text">
+    <form action="/stylists" method="post">
+      <label for="stylist_name">New stylist name:</lable>
+      <input id="stylist_name" name="stylist_name" type="text">
 
-  <button type="submit">Add stylist</button>
-</form>
+      <button type="submit">Add stylist</button>
+    </form>
 
-<% if @stylists.any?() %>
-  <p>Click on stylist to see clients:</p>
+    <% if @stylists.any?() %>
+      <p>Click on stylist to see clients:</p>
 
-  <ul>
-    <% @stylists.each() do |stylist| %>
-      <li><a href="/stylists/<%= stylist.id() %>"><%= stylist.stylist_name() %></a></li>
+      <ul>
+        <% @stylists.each() do |stylist| %>
+          <li><a href="/stylists/<%= stylist.id() %>"><%= stylist.stylist_name() %></a></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>There are no stylists yet</p>
     <% end %>
-  </ul>
-<% else %>
-  <p>There are no stylists yet</p>
-<% end %>
+  </body>
+</html>
