@@ -15,4 +15,12 @@ describe(Stylists) do
       expect(stylist1).to(eq(stylist2))
     end
   end
+
+  describe("#save") do
+    it("saves stylists to the database") do
+      stylist1 = Stylists.new({:id => nil, :stylist_name => 'Sally', :client_id => nil})
+      stylist1.save()
+      expect(Stylists.all()).to(eq([stylist1]))
+    end
+  end
 end

@@ -11,9 +11,9 @@ class Stylists
     returned_stylists = DB.exec("SELECT * FROM stylists;")
     stylists = []
     returned_stylists.each() do |stylist|
-      id = stylist.fetch(:id).to_i()
-      stylist_name = stylist.fetch(:stylist_name)
-      client_id = stylist.fetch(:client_id)
+      id = stylist.fetch("id").to_i()
+      stylist_name = stylist.fetch("stylist_name")
+      client_id = stylist.fetch("client_id").to_i()
       stylists.push(Stylists.new({:id => id, :stylist_name => stylist_name, :client_id => client_id}))
     end
     stylists
@@ -21,5 +21,10 @@ class Stylists
 
   define_method(:==) do |another_stylist|
     self.stylist_name().==(another_stylist.stylist_name()).&(self.id().==(another_stylist.id()))
+  end
+
+  define_method(:save) do
+    result = DB.exec("INSERT INTO stylists (stylist_name) VALUES ('#{@stylist_name}') RETURNING id")
+    @id = result.first().fetch("id").to_i()
   end
 end
