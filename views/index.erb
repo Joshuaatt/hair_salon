@@ -13,7 +13,7 @@
   <p>Click on stylist to see clients:</p>
 
   <ul>
-    <% @sylists.each() do |stylist| %>
+    <% @stylists.each() do |stylist| %>
       <li><a href="/stylists/<%= stylist.id() %>"><%= stylist.stylist_name() %></a></li>
     <% end %>
   </ul>
