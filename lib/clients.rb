@@ -6,4 +6,14 @@ class Clients
     @client_name = attributes.fetch(:client_name)
   end
 
+  define_singleton_method(:all) do
+    returned_clients = DB.exec("SELECT * FROM clients;")
+    clients = []
+    returned_clients.each() do |client|
+      id = client.fetch(:id).to_i()
+      client_name = client.fetch(:client_name)
+      clients.push(Clients.new({:id => id, :client_name => client_name}))
+    end
+    clients
+  end
 end
