@@ -15,4 +15,12 @@ describe(Clients) do
       expect(client1).to(eq(client2))
     end
   end
+
+  describe("#save") do
+    it("saves clients to the database") do
+      client1 = Clients.new({:id => nil, :client_name => 'Joe', :stylist_id => nil})
+      client1.save()
+      expect(Clients.all()).to(eq([client1]))
+    end
+  end
 end
